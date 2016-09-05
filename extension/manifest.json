@@ -1,0 +1,38 @@
+{
+  "name": "Instant reader",
+  "description": "Instant reader mode",
+  "version": "1.0",
+  "permissions": [
+    "tabs", "activeTab", "contextMenus", "storage", "http://*/*", "https://*/*"
+  ],
+  "page_action": {
+      "default_title": "Read page",
+      "default_icon": "images/icon128.png",
+      "default_popup": "popup.html"
+  },
+     "icons":
+   {
+      // "16": "images/icon16.png",
+      // "19": "images/icon19.png",
+      // "48": "images/icon48.png",
+      "128": "images/icon128.png"
+   },
+    "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "options_page": "options/wave-options.html",
+  "content_scripts": [
+    {
+      "matches": [
+       "http://*/*", "https://*/*"    
+      ],
+      "js": ["readability.js", "content.js"],
+      "css": ["readerstyle.css"]  
+    }
+  ], 
+    "web_accessible_resources": [
+    "images/*"
+  ],
+  "manifest_version": 2
+}
